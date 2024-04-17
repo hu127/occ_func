@@ -30,8 +30,15 @@ conda activate mesh_funcspace
 Next, compile the extension modules.
 You can do this via
 ```
-python setup.py build_ext --inplace
+CC=gcc CXX=gcc python setup.py build_ext --inplace 
 ```
+
+if has error shown as `fatal error: numpy/arrayobject.h: No such file or directory`, try link numpy heads through shell via
+```
+export CFLAGS=-I/usr/lib/python3.6/site-packages/numpy/core/include/
+```
+
+
 
 To compile the dmc extension, you have to have a cuda enabled device set up.
 If you experience any errors, you can simply comment out the `dmc_*` dependencies in `setup.py`.
